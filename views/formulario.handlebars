@@ -1,0 +1,37 @@
+<main>
+    {{! Formulário de cadastro }}
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-6 offset-2">
+                
+                <form action="/cadastrar" method="post">
+                    <h1> Formulario de Cadastro </h1>
+                    <input name="nome" class= "form-control" type="text"placeholder="Nome do produto">
+                    <input name="valor" class= "form-control" type="number"placeholder="Valor do produto">
+                    <input name="marca" class= "form-control" type="text"placeholder="Marca do produto">
+                    <select name="categoria" class= "form-control"  type="categoria"placeholder="categoria do produto">
+                        <option value="varas">Varas</option>
+                        <option value="carretilhas">Carretilhas</option>
+                        <option value="molinetes">Molinetes</option>
+                        <option value="linhas">Linhas</option>
+                        <option value="anzois">Anzóis</option>
+                        <option value="iscas">Iscas</option>
+                        <option value="caixas">Caixas</option>
+                        <option value="acessorios">Acessórios</option>
+                        <option value="eletronicos">Eletrônicos</option>
+                        <option value="barcos">Barcos Equipamentos</option>
+                        <option value="vestuario">Vestuário</option>
+                        <option value="conveniencia">Conveniência</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                    <input name="descricao" class="form-control" type="text"placeholder="Descricao do produto">
+                    <input name="imagem" class="form-control" type="file"placeholder="imagem do produto">
+                    <input class="btn btn-primary" type="submit" value="Cadastrar">
+                </form>
+
+            </div>     
+        </div>
+    </div>
+
+</main>
