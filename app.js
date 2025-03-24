@@ -1,9 +1,14 @@
 const { engine } = require ('express-handlebars');
 const express = require('express');
 const mysql = require('mysql2');
+const fileUpload = require('express-fileupload');
 
 // inicialização do express
 const app = express();
+
+// importar modulo file upload
+
+app.use(fileUpload());
 
 // adicionar bootstrap
 app.use('/bootstrap', express.static('./node_modules/bootstrap/dist'));
@@ -45,7 +50,10 @@ app.get('/', (req, res) => {
 
 app.post('/cadastrar', function(req, res) {
     console.log(req.body);
-    res.send('cadastro recebido');
+    console.log(req.files.imagem.name);
+
+    req.files.imagem.mv(__dirname + '/imagens/'+req.files.imagem.name)
+
     res.end();
 });
 

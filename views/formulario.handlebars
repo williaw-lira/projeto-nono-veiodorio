@@ -5,7 +5,7 @@
         <div class="row ">
             <div class="col-6 offset-2">
                 
-                <form action="/cadastrar" method="post">
+                <form action="/cadastrar" method="post" enctype="multipart/form-data">
                     <h1> Formulario de Cadastro </h1>
                     <input name="nome" class= "form-control" type="text"placeholder="Nome do produto">
                     <input name="valor" class= "form-control" type="number"placeholder="Valor do produto">
@@ -25,8 +25,8 @@
                         <option value="conveniencia">Conveniência</option>
                         <option value="outros">Outros</option>
                     </select>
-                    <input name="descricao" class="form-control" type="text"placeholder="Descricao do produto">
-                    <input name="imagem" class="form-control" type="file"placeholder="imagem do produto">
+                    <input name="descricao" class="form-control" type="text" placeholder="Descricao do produto">
+                    <input name="imagem" class="form-control" type="file" placeholder="imagem do produto">
                     <input class="btn btn-primary" type="submit" value="Cadastrar">
                 </form>
 
