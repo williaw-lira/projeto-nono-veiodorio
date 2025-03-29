@@ -1,0 +1,72 @@
+/* produtos.css */
+.produtos-container {
+    padding: 20px;
+    background-color: #f8f9fa; /* fundo claro para contraste */
+}
+
+.produtos-container h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #343a40; /* título em tom escuro */
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização dos cards de produto */
+.produtos-container .card {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.produtos-container .card:hover {
+    transform: translateY(-5px);
+}
+
+.produtos-container .card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    object-fit: cover;
+    height: 200px;
+}
+
+.produtos-container .card-body {
+    padding: 15px;
+}
+
+.produtos-container .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.produtos-container .card-text {
+    margin-bottom: 5px;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Contêiner para alinhar o valor e o ícone do WhatsApp */
+.produtos-container .price-contact {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.produtos-container .price-contact p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #343a40;
+}
+
+/* Ajuste do ícone do WhatsApp */
+.produtos-container .whats-icon {
+    height: 24px; /* ajuste conforme desejado */
+    margin-left: 8px;
+    vertical-align: middle;
+}

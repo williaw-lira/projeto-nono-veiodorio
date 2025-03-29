@@ -34,6 +34,8 @@ app.use('/bootstrap', express.static('./node_modules/bootstrap/dist'));
 // adicionar css 
 app.use('/css', express.static('./css'));
 
+
+
 // referenciar pasta img
 app.use('/imagens', express.static('./imagens'));
 
@@ -63,26 +65,33 @@ conexao.connect(function(err){
     console.log('Conexão com o banco de dados estabelecida');
 });
 
-//rota principal/ cadastro --- trocar para rota pricipal e criar nova de cadatro = FORMULARIO
+//rota principal
 app.get('/', (req, res) => {
-    res.render('home');
-    
-});
-
-//app.get('/cadastro', (req, res) => {
-
-app.get('/produtos', (req, res) => {
-    //sql 
-    let sql = 'SELECT * FROM produtos';
-    //executar o comando sql
-    conexao.query(sql, function(erro, retorno){
-        if(erro) throw erro;
-        res.render('produtos', {produtos: retorno});
+    let sql = 'SELECT * FROM produtos ORDER BY RAND() LIMIT 5';
+    conexao.query(sql, function(err, produtosCarousel) {
+        if (err) throw err;
+        res.render('home', { produtosCarousel });
     });
 });
 
+    // rota produtos
+
+    app.get('/produtos', (req, res) => {
+        let categoria = req.query.categoria;
+        let sql = 'SELECT * FROM produtos';
+        if (categoria) {
+            // Utiliza a categoria e ordena alfabeticamente pela coluna "marca"
+            sql += " WHERE categoria = ? ORDER BY marca ASC";
+        }
+        conexao.query(sql, categoria ? [categoria] : [], function(err, produtos) {
+            if (err) throw err;
+            res.render('produtos', { produtos });
+        });
+    });
+    
 
 
+    
 app.post('/cadastrar', function(req, res) {
     // obter dados do formulario
     let nome = req.body.nome;

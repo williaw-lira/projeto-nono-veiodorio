@@ -1,0 +1,10 @@
+/* cadastro.css */
+form {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+form input,
+form select {
+    margin-bottom: 10px;
+}
