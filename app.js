@@ -3,6 +3,8 @@ const express = require('express');
 const mysql = require('mysql2');
 const fileUpload = require('express-fileupload');
 
+
+
 // inicialização do express
 const app = express();
 
@@ -15,6 +17,9 @@ app.use('/bootstrap', express.static('./node_modules/bootstrap/dist'));
 
 // adicionar css 
 app.use('/css', express.static('./css'));
+
+// referenciar pasta img
+app.use('/imagens', express.static('./imagens'));
 
 // manipulação de dados via rotas
 app.use(express.json());
@@ -42,20 +47,68 @@ conexao.connect(function(err){
     console.log('Conexão com o banco de dados estabelecida');
 });
 
-//rota cadastro --- trocar para rota pricipal
+//rota principal/ cadastro --- trocar para rota pricipal e criar nova de cadatro = FORMULARIO
 app.get('/', (req, res) => {
-    res.render('formulario');
-}
-);
+    //sql 
+    let sql = 'SELECT * FROM produtos';
+    //executar o comando sql
+    conexao.query(sql, function(erro, retorno){
+        if(erro) throw erro;
+        res.render('formulario', {produtos: retorno});
+    });
+    
+});
+
+//app.get('/cadastro', (req, res) => {
+
+app.get('/produtos', (req, res) => {
+    //sql 
+    let sql = 'SELECT * FROM produtos';
+    //executar o comando sql
+    conexao.query(sql, function(erro, retorno){
+        if(erro) throw erro;
+        res.render('produtos', {produtos: retorno});
+    });
+});
+
+
 
 app.post('/cadastrar', function(req, res) {
-    console.log(req.body);
-    console.log(req.files.imagem.name);
+    // obter dados do formulario
+    let nome = req.body.nome;
+    let valor = req.body.valor;
+    let marca = req.body.marca;
+    let categoria = req.body.categoria;
+    let imagem = req.files.imagem.name;
 
-    req.files.imagem.mv(__dirname + '/imagens/'+req.files.imagem.name)
+    // estrutura sql 
+    let sql = `INSERT INTO produtos (nome, valor, marca, categoria, imagem) VALUES ('${nome}', '${valor}', '${marca}', '${categoria}','${imagem}')`;
 
+    // executar o comando sql 
+    conexao.query(sql, function(erro, retorno){
+        if(erro) throw erro;
+        
+        req.files.imagem.mv(__dirname + '/imagens/'+req.files.imagem.name)
+        console.log(retorno);
+    });
+
+    // retornar para a rota principal -- trocar para rota de cadastro 
+    res.redirect('/');
     res.end();
 });
+
+    // rota contato 
+    app.get('/contato', (req, res) => {
+        res.render('contato');
+    });
+
+
+        
+
+    // rota login
+    app.get('/login', (req, res) => {
+        res.render('login');
+    });
 
 //servidor 
 app.listen(3020, function (){

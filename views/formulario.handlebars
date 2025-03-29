@@ -25,7 +25,6 @@
                         <option value="conveniencia">Conveniência</option>
                         <option value="outros">Outros</option>
                     </select>
-                    <input name="descricao" class="form-control" type="text" placeholder="Descricao do produto">
                     <input name="imagem" class="form-control" type="file" placeholder="imagem do produto">
                     <input class="btn btn-primary" type="submit" value="Cadastrar">
                 </form>
@@ -33,5 +32,30 @@
             </div>     
         </div>
     </div>
+
+        {{! Lista de produtos cadastrados }}
+    <div class="container">
+        <div class="row">
+            {{#each produtos}}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card">
+                        <img src="../imagens/{{imagem}}">
+                            <div class="textos">
+                                <p>{{nome}}</p>
+                                <p>R$ {{valor}}</p>
+                                <p>Marca: {{marca}}</p>
+                                <p>Categoria: {{categoria}}</p>
+                            </div>
+                            <a href="#" class="btn btn-warning">Alterar</a>
+                            <a href="#" class="btn btn-danger">Remover</a>
+                    </div>
+                </div>
+            
+            {{/each}}
+
+            
+        </div>
+    </div>
+
 
 </main>
