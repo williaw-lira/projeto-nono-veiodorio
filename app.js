@@ -1,12 +1,28 @@
+require('dotenv').config();
 const { engine } = require ('express-handlebars');
 const express = require('express');
 const mysql = require('mysql2');
 const fileUpload = require('express-fileupload');
-
-
+const session = require('express-session');
 
 // inicialização do express
 const app = express();
+
+
+app.use(session({
+    secret: 'security', // troque por uma chave segura
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // se estiver usando https, defina como true
+}));
+
+function isAuthenticated(req, res, next) {
+    if (req.session.user) {
+        return next();
+    }
+    res.redirect('/login');
+}
+
 
 // importar modulo file upload
 
@@ -49,13 +65,7 @@ conexao.connect(function(err){
 
 //rota principal/ cadastro --- trocar para rota pricipal e criar nova de cadatro = FORMULARIO
 app.get('/', (req, res) => {
-    //sql 
-    let sql = 'SELECT * FROM produtos';
-    //executar o comando sql
-    conexao.query(sql, function(erro, retorno){
-        if(erro) throw erro;
-        res.render('formulario', {produtos: retorno});
-    });
+    res.render('home');
     
 });
 
@@ -109,6 +119,28 @@ app.post('/cadastrar', function(req, res) {
     app.get('/login', (req, res) => {
         res.render('login');
     });
+
+    app.post('/login', (req, res) => {
+        const { username, password } = req.body;
+        if ((username === 'nono' || username === 'williaw') && password === 'rioveio123') {
+            req.session.user = username; // Armazena o usuário na sessão
+            res.redirect('/cadastro');    // Redireciona para a área admin (cadastro)
+        } else {
+            res.redirect('/login?error=1'); // Redireciona para login com erro
+        }
+    });
+    
+    app.get('/cadastro', isAuthenticated, (req, res) => {
+         //sql 
+    let sql = 'SELECT * FROM produtos';
+    //executar o comando sql
+    conexao.query(sql, function(erro, retorno){
+        if(erro) throw erro;
+        res.render('cadastro', {produtos: retorno});
+    });
+    
+});
+    
 
 //servidor 
 app.listen(3020, function (){
