@@ -4,6 +4,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const fileUpload = require('express-fileupload');
 const session = require('express-session');
+const fs = require('fs');
 
 // inicialização do express
 const app = express();
@@ -25,7 +26,6 @@ function isAuthenticated(req, res, next) {
 
 
 // importar modulo file upload
-
 app.use(fileUpload());
 
 // adicionar bootstrap
@@ -33,7 +33,6 @@ app.use('/bootstrap', express.static('./node_modules/bootstrap/dist'));
 
 // adicionar css 
 app.use('/css', express.static('./css'));
-
 
 
 // referenciar pasta img
@@ -112,7 +111,7 @@ app.post('/cadastrar', function(req, res) {
     });
 
     // retornar para a rota principal -- trocar para rota de cadastro 
-    res.redirect('/');
+    res.redirect('/cadastro');
     res.end();
 });
 
@@ -150,6 +149,80 @@ app.post('/cadastrar', function(req, res) {
     
 });
     
+    // rota para excluir produto
+    app.get('/remover/:codigo&:imagem', function(req, res){
+        // sql
+    let sql = `DELETE FROM produtos WHERE codigo = ${req.params.codigo}`;
+
+    // executar o comando sql
+    conexao.query(sql, function(erro, retorno){
+        if(erro) throw erro;
+        // remover imagem do servidor 
+        fs.unlink(__dirname + '/imagens/' + req.params.imagem, (erro_imagem) => {
+            if(erro_imagem) throw erro_imagem;
+            console.log('Imagem removida com sucesso');
+        });
+    });
+    res.redirect('/cadastro');
+});
+
+    // rota para editar produto
+    app.get('/formularioEditar/:codigo', function(req, res){
+        // sql
+    let sql = `SELECT * FROM produtos WHERE codigo = ${req.params.codigo}`;
+        // executar o comando sql
+    conexao.query(sql, function(erro, retorno){
+        if(erro) throw erro;
+        res.render('formularioEditar', {produto: retorno[0]});
+        });
+    });
+
+    
+    // rota para atualizar produto
+    app.post('/editar', function(req, res){
+        // obter dados do formulario
+        let codigo = req.body.codigo;
+        let nome = req.body.nome;
+        let valor = req.body.valor;
+        let marca = req.body.marca;
+        let categoria = req.body.categoria;
+        let nomeImagem = req.body.nomeImagem;
+        
+        //definir o tipo de edição
+        try{
+            // ojeto de imagem
+            let imagem = req.files.imagem.name;
+
+            // sql
+            let sql = `UPDATE produtos SET nome = '${nome}', valor = '${valor}', marca = '${marca}', categoria = '${categoria}', imagem = '${imagem}' WHERE codigo = ${codigo}`;
+
+            // executar o comando sql   
+            conexao.query(sql, function(erro, retorno){
+                if(erro) throw erro;
+                // remover imagem do servidor 
+                fs.unlink(__dirname + '/imagens/' + nomeImagem, (erro_imagem) => {
+                    if(erro_imagem) throw erro_imagem;
+                    console.log('Imagem removida com sucesso');
+                });
+            });
+            // cadastro da nova imagem
+            imagem.mv(__dirname + '/imagens/' + imagem.name);
+
+        }catch(erro){
+            // sql
+            let sql = `UPDATE produtos SET nome = '${nome}', valor = '${valor}', marca = '${marca}', categoria = '${categoria}' WHERE codigo = ${codigo}`;
+
+            // executar o comando sql
+            conexao.query(sql, function(erro, retorno){
+                if(erro) throw erro;
+                
+            });
+        }
+
+        // redirecionamento 
+        res.redirect('/cadastro');
+    });
+
 
 //servidor 
 app.listen(3020, function (){

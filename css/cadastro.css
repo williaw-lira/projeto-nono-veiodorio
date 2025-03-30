@@ -4,7 +4,25 @@ form {
     margin-bottom: 20px;
 }
 
+form img{
+    width: 200px;
+    margin-bottom: 10px;
+}
+
 form input,
 form select {
     margin-bottom: 10px;
+}
+.card{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+
+form input[type="submit"]{
+    margin-top: 10px ;
+
+}
+.container{
+    background-color: rgb(67, 83, 94);
 }

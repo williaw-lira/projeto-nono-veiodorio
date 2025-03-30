@@ -9,3 +9,4 @@ npm tailwindcss init
 npm i express-fileupload
 npm install express-session
 npm install dotenv
+npm install tailwindcss @tailwindcss/vite
