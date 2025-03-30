@@ -1,11 +1,13 @@
 /* contato.css */
 .contato-container {
     padding: 20px;
+    
 }
 
 .contato-container h1,
 .contato-container h2 {
     color: #1d4ed8;
+    background-color: black;
 }
 
 .contato-container p {

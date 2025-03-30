@@ -1,29 +1,32 @@
-    <main class="container mt-4">
-    <h1 >Produtos</h1>
-    <!-- Menu de filtro -->
+<main class="container mt-4">
+    <h1>Produtos</h1>
+    <!-- Menu de filtro e pesquisa -->
     <div class="mb-4">
         <form action="/produtos" method="get" class="row g-3">
-        <div class="col-auto">
-            <select name="categoria" class="form-select">
-            <option value="">Todas as Categorias</option>
-            <option value="varas">Varas</option>
-            <option value="carretilhas">Carretilhas</option>
-            <option value="molinetes">Molinetes</option>
-            <option value="linhas">Linhas</option>
-            <option value="anzois">Anzóis</option>
-            <option value="iscas">Iscas</option>
-            <option value="caixas">Caixas</option>
-            <option value="acessorios">Acessórios</option>
-            <option value="eletronicos">Eletrônicos</option>
-            <option value="barcos">Barcos Equipamentos</option>
-            <option value="vestuario">Vestuário</option>
-            <option value="conveniencia">Conveniência</option>
-            <option value="outros">Outros</option>
-            </select>
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Filtrar</button>
-        </div>
+            <div class="col-auto">
+                <input type="text" name="busca" class="form-control" placeholder="Pesquisar produtos">
+            </div>
+            <div class="col-auto">
+                <select name="categoria" class="form-select">
+                    <option value="">Todas as Categorias</option>
+                    <option value="varas">Varas</option>
+                    <option value="carretilhas">Carretilhas</option>
+                    <option value="molinetes">Molinetes</option>
+                    <option value="linhas">Linhas</option>
+                    <option value="anzois">Anzóis</option>
+                    <option value="iscas">Iscas</option>
+                    <option value="caixas">Caixas</option>
+                    <option value="acessorios">Acessórios</option>
+                    <option value="eletronicos">Eletrônicos</option>
+                    <option value="barcos">Barcos Equipamentos</option>
+                    <option value="vestuario">Vestuário</option>
+                    <option value="conveniencia">Conveniência</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Filtrar</button>
+            </div>
         </form>
     </div>
 
@@ -32,18 +35,18 @@
         {{#each produtos}}
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
             <div class="card h-100">
-            <img src="/imagens/{{this.imagem}}" class="card-img-top" alt="{{this.nome}}">
-            <div class="card-body">
-                <h5 class="card-title">{{this.nome}}</h5>
-                <p class="card-text">Marca: {{this.marca}}</p>
-                <p class="card-text">Categoria: {{this.categoria}}</p>
-                <p class="card-text">R$ {{this.valor}}</p>
-                <a href="https://wa.me/5544999889253" target="_blank">
-                <img src="/imagens/whats.jpg" class="whats-icon" style="height:40px; " ></a>
-            </div>
+                <img src="/imagens/{{this.imagem}}" class="card-img-top" alt="{{this.nome}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.nome}}</h5>
+                    <p class="card-text">Marca: {{this.marca}}</p>
+                    <p class="card-text">Categoria: {{this.categoria}}</p>
+                    <p class="card-text">R$ {{this.valor}}</p>
+                    <a href="https://wa.me/5544999889253" target="_blank">
+                        <img src="/imagens/whats.jpg" class="whats-icon" style="height:40px;" alt="WhatsApp">
+                    </a>
+                </div>
             </div>
         </div>
         {{/each}}
     </div>
-    </main>
-        
+</main>
