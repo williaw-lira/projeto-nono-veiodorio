@@ -1,0 +1,28 @@
+<main class="container mt-4">
+  <h1 class="text-2xl font-bold mb-4">Guias de Pesca</h1>
+  <div id="guiaCarrossel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {{#each guias}}
+      <div class="carousel-item {{#if @first}}active{{/if}}">
+        <img src="/imagens/{{this.imagem_principal}}" class="d-block w-100" alt="{{this.nome}}">
+        <div class="carousel-caption d-block bg-gray-900 bg-opacity-75 p-2 rounded">
+          <h5 class="text-xl font-semibold">{{this.nome}}</h5>
+          <p class="text-base">{{this.descricao}}</p>
+          <div class="mt-2 space-x-2">
+            <a href="https://wa.me/{{this.whatsapp}}" target="_blank" class="btn btn-success text-sm inline-block">
+              <i class="fab fa-whatsapp"></i> Fale com o Guia
+            </a>
+            <a href="/guiapesca/{{this.id}}" class="btn btn-primary text-sm inline-block">Saiba Mais</a>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#guiaCarrossel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#guiaCarrossel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</main>

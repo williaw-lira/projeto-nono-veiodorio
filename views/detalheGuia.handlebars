@@ -1,0 +1,30 @@
+    <main class="container mt-4">
+    <h1 class="text-2xl font-bold mb-4">{{guia.nome}}</h1>
+    
+    <!-- Carrossel de Fotos do Guia -->
+    <div id="guiaDetalheCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+        {{#each imagensCarousel}}
+        <div class="carousel-item {{#if @first}}active{{/if}}">
+            <img src="/imagens/{{this}}" class="d-block w-100" alt="Imagem do guia">
+        </div>
+        {{/each}}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#guiaDetalheCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#guiaDetalheCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+        </button>
+    </div>
+    
+    <!-- Descrição e Contato -->
+    <div class="mt-4">
+        <p class="text-base mb-2">{{guia.descricao}}</p>
+        <a href="https://wa.me/{{guia.whatsapp}}" target="_blank" class="btn btn-success text-sm inline-block">
+        <i class="fab fa-whatsapp"></i> Fale com o Guia
+        </a>
+    </div>
+    </main>
