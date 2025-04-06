@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 const { engine } = require ('express-handlebars');
 const express = require('express');
@@ -6,9 +7,11 @@ const fileUpload = require('express-fileupload');
 const session = require('express-session');
 const fs = require('fs');
 
+
 // inicialização do express
 const app = express();
 
+const port = process.env.PORT || 3020;
 
 app.use(session({
     secret: 'security', // troque por uma chave segura
