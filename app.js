@@ -11,7 +11,17 @@ const fs = require('fs');
 // inicialização do express
 const app = express();
 
-const port = process.env.PORT || 3020;
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'williaw',
+    database: 'veiodorio',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
+
+const PORT = process.env.PORT || 3020;
 
 app.use(session({
     secret: 'security', // troque por uma chave segura
