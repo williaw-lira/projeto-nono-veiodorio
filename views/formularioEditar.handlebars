@@ -1,45 +1,43 @@
-<main>
-    {{! Formulário de cadastro }}
 
-    <div class="container">
-        <div class="row ">
-            <div class="col-6 offset-2">
-                
-                <form action="/editar" method="post" enctype="multipart/form-data">
-                    <h1> Editar Produto ja Cadastrado </h1>
-
-                    <img src="../imagens/{{produto.imagem}}">
-
-                    <input type="hidden" name="codigo" value="{{produto.codigo}} ">
-                    <input name="nome" class= "form-control" type="text"placeholder="Nome do produto" value="{{produto.nome}}">
-                    <input name="valor" class= "form-control" type="number"placeholder="Valor do produto" value="{{produto.valor}}">
-                    <input name="marca" class= "form-control" type="text"placeholder="Marca do produto" value="{{produto.marca}}">
-                    <select name="categoria" class= "form-control"  type="categoria"placeholder="categoria do produto" value="{{produto.categoria}}">
-                        <option value="varas">Varas</option>
-                        <option value="carretilhas">Carretilhas</option>
-                        <option value="molinetes">Molinetes</option>
-                        <option value="linhas">Linhas</option>
-                        <option value="anzois">Anzóis</option>
-                        <option value="iscas">Iscas</option>
-                        <option value="caixas">Caixas</option>
-                        <option value="acessorios">Acessórios</option>
-                        <option value="eletronicos">Eletrônicos</option>
-                        <option value="barcos">Barcos Equipamentos</option>
-                        <option value="vestuario">Vestuário</option>
-                        <option value="conveniencia">Conveniência</option>
-                        <option value="outros">Outros</option>
-                    </select>
-                    <input name="imagem" class="form-control" type="file" placeholder="imagem do produto ">
-
-                    <input type="hidden" name="nomeImagem" value="{{produto.imagem}}">
-
-                    <input class="btn btn-primary" type="submit" value="alterar">
-                    <a href="/cadastro" class="btn btn-secondary">Cancelar</a>
-                </form>
-
-            </div>     
+    <main class="container mt-4">
+    <h1>Editar Produto</h1>
+    <form action="/editar" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{produto._id}}">
+        <input type="hidden" name="nomeImagem" value="{{produto.imagem}}">
+        <div class="mb-3">
+        <input name="nome" class="form-control" type="text" value="{{produto.nome}}">
         </div>
-    </div>
-
-
-</main>
+        <div class="mb-3">
+        <input name="valor" class="form-control" type="number" value="{{produto.valor}}">
+        </div>
+        <div class="mb-3">
+        <input name="marca" class="form-control" type="text" value="{{produto.marca}}">
+        </div>
+        <div class="mb-3">
+        <select name="categoria" class= "form-control"  type="categoria"placeholder="categoria do produto" value="{{produto.categoria}}">
+                            <option value="varas">Varas</option>
+                            <option value="carretilhas">Carretilhas</option>
+                            <option value="molinetes">Molinetes</option>
+                            <option value="linhas">Linhas</option>
+                            <option value="anzois">Anzóis</option>
+                            <option value="iscas">Iscas</option>
+                            <option value="caixas">Caixas</option>
+                            <option value="acessorios">Acessórios</option>
+                            <option value="eletronicos">Eletrônicos</option>
+                            <option value="barcos">Barcos Equipamentos</option>
+                            <option value="vestuario">Vestuário</option>
+                            <option value="conveniencia">Conveniência</option>
+                            <option value="outros">Outros</option>
+                        </select>
+        </div>
+        <div class="mb-3">
+        <label>Imagem Atual:</label><br>
+        <img src="/imagens/{{produto.imagem}}" style="height:100px;" alt="Atual">
+        </div>
+        <div class="mb-3">
+        <label>Nova Imagem (opcional):</label>
+        <input name="imagem" class="form-control" type="file">
+        </div>
+        <button class="btn btn-success">Atualizar</button>
+    </form>
+    </main>

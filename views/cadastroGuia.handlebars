@@ -1,47 +1,45 @@
+
     <main class="container mt-4">
     <h1>Cadastrar Guia</h1>
     <form action="/cadastrarGuia" method="post" enctype="multipart/form-data">
         <div class="mb-3">
-        <label>Nome do Guia:</label>
-        <input type="text" name="nome" class="form-control" required>
-        </div>
-        <div class="mb-3">
-        <label>Descrição:</label>
-        <textarea name="descricao" class="form-control" required></textarea>
-        </div>
-        <div class="mb-3">
-        <label>Imagem Principal:</label>
-        <input type="file" name="imagem_principal" class="form-control" required>
-        </div>
-        <div class="mb-3">
-        <label>Imagem Secundária:</label>
-        <input type="file" name="imagemSec" class="form-control">
-        </div>
-        <div class="mb-3">
-        <label>Imagem Terciária:</label>
-        <input type="file" name="imagemTerc" class="form-control">
-        </div>
-        <div class="mb-3">
-        <label>WhatsApp:</label>
-        <input type="text" name="whatsapp" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <label>Nome do Guia:</label>
+            <input type="text" name="nome" class="form-control" required>
+            </div>
+            <div class="mb-3">
+            <label>Descrição:</label>
+            <textarea name="descricao" class="form-control" required></textarea>
+            </div>
+            <div class="mb-3">
+            <label>Imagem Principal:</label>
+            <input type="file" name="imagem_principal" class="form-control" required>
+            </div>
+            <div class="mb-3">
+            <label>Imagem Secundária:</label>
+            <input type="file" name="imagemSec" class="form-control">
+            </div>
+            <div class="mb-3">
+            <label>Imagem Terciária:</label>
+            <input type="file" name="imagemTerc" class="form-control">
+            </div>
+            <div class="mb-3">
+            <label>WhatsApp:</label>
+            <input type="text" name="whatsapp" class="form-control" required>
+            </div>
+        <button class="btn btn-primary">Cadastrar</button>
     </form>
-    
-    <!-- Lista dos guias com opção de exclusão -->
+
     <hr>
-    <h2 class="mt-4">Lista de Guias</h2>
+    <h2>Lista de Guias</h2>
     {{#if guias}}
     <ul class="list-group">
         {{#each guias}}
         <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span>{{this.nome}}</span>
+        {{this.nome}}
         <div>
-            <a href="/guiapesca/{{this.id}}" class="btn btn-info btn-sm">Ver Detalhes</a>
-            <a href="/excluirGuia/{{this.id}}" class="btn btn-danger btn-sm"
-            onclick="return confirm('Tem certeza que deseja excluir este guia?');">
-            Excluir
-            </a>
+            <a href="/guiapesca/{{this._id}}" class="btn btn-info btn-sm">Ver Detalhes</a>
+            <a href="/excluirGuia/{{this._id}}" class="btn btn-danger btn-sm"
+            onclick="return confirm('Excluir este guia?')">Excluir</a>
         </div>
         </li>
         {{/each}}
