@@ -5,17 +5,20 @@
     const session     = require('express-session');
     const fs          = require('fs');
     const { engine }  = require('express-handlebars');
+    const db = require('./db.js');
 
     // Inicialização
     const app = express();
 
     // Conexão MongoDB
-    mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/veiodorio', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-    })
-    .then(() => console.log("MongoDB conectado"))
-    .catch(err => console.error("Erro ao conectar ao MongoDB:", err));
+    mongoose.connect(db.mongoURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+        })
+        .then(() => console.log("MongoDB conectado"))
+        .catch(err => console.error("Erro ao conectar ao MongoDB:", err));
+    
+    
 
     // Schemas e Models
     const produtoSchema = new mongoose.Schema({

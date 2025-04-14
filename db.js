@@ -1,0 +1,6 @@
+const { mongo } = require("mongoose");
+if(process.env.NODE_ENV !== "production"){
+    module.exports = {mongoURI: 'mongodb://williawcom:<db_password>@ac-x78vihp-shard-00-00.cv1lkzu.mongodb.net:27017,ac-x78vihp-shard-00-01.cv1lkzu.mongodb.net:27017,ac-x78vihp-shard-00-02.cv1lkzu.mongodb.net:27017/?replicaSet=atlas-semkcb-shard-0&ssl=true&authSource=admin'};
+}else{
+    module.exports = {mongoURI: "mongodb://localhost:3020/"};
+}
