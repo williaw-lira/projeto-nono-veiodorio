@@ -125,7 +125,6 @@
         res.render('formularioEditar', { produto });
         } catch (err) { next(err); }
     });
-  
 
     // CRUD (admin)
 

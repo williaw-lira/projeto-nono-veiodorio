@@ -5,7 +5,8 @@
       {{#each guias}}
       <div class="carousel-item {{#if @first}}active{{/if}}">
         <img src="/imagens/{{this.imagem_principal}}" class="d-block w-100" alt="{{this.nome}}">
-        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-2 rounded">
+        <div class="carousel-caption bg-dark bg-opacity-75 p-2 rounded text-white text-center">
+
           <h5>{{this.nome}}</h5>
           <p>{{this.descricao}}</p>
           <a href="/guiapesca/{{this._id}}" class="btn btn-primary btn-sm">Saiba Mais</a>
