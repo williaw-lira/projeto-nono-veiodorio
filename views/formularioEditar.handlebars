@@ -2,7 +2,7 @@
     <main class="container mt-4">
     <h1>Editar Produto</h1>
     <form action="/editar" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="{{produto._id}}">
+        <input type="hidden" name="id" value="{{this.codigo}}">
         <input type="hidden" name="nomeImagem" value="{{produto.imagem}}">
         <div class="mb-3">
         <input name="nome" class="form-control" type="text" value="{{produto.nome}}">

@@ -14,7 +14,6 @@
     "express-handlebars",
     "bootstrap",
     "mongoose"
-    
   ],
   "author": "william lira",
   "license": "ISC",
@@ -27,8 +26,10 @@
     "express-fileupload": "^1.5.1",
     "express-handlebars": "^8.0.1",
     "express-session": "^1.18.1",
-    "mongoose": "^8.13.2"
-    
+    "mongoose": "^8.13.2",
+    "pg": "^8.14.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7"
   },
   "devDependencies": {
     "tailwindcss": "^4.0.17"
