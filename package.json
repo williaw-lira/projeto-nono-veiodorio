@@ -7,13 +7,21 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
     "dev": "nodemon app.js"
+    
   },
   "keywords": [
     "express",
     "express-handlebars",
     "bootstrap",
-    "mongoose"
+    "tailwindcss",
+    "mongoose",
+    "dotenv",
+    "express-session",
+    "express-fileupload",
+    "pg"  
+    
   ],
   "author": "william lira",
   "license": "ISC",
@@ -26,10 +34,8 @@
     "express-fileupload": "^1.5.1",
     "express-handlebars": "^8.0.1",
     "express-session": "^1.18.1",
-    "mongoose": "^8.13.2",
-    "pg": "^8.14.1",
-    "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.7"
+    "pg": "^8.0.0"
+    
   },
   "devDependencies": {
     "tailwindcss": "^4.0.17"
