@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Produtos – Nonô Véio do Rio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/produtos.css">
+</head>
+<body>
+<!-- ========== HEADER ========== -->
+<header>
+  <nav class="bg-gray-800 p-4 flex items-center justify-between">
+    <!-- Logo / Título -->
+    <a href="/index.html" class="text-white font-bold text-xl">
+      Nonô Veio do Rio
+    </a>
+
+    <!-- Botão hambúrguer (apenas em md<) -->
+    <button id="mobile-menu-button"
+            class="text-white md:hidden focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+
+    <!-- Menu de links -->
+    <ul id="mobile-menu"
+        class="hidden flex-col space-y-2 md:space-y-0 md:flex md:flex-row md:space-x-4">
+      <li><a href="/index.html"     class="block text-white hover:text-gray-300">Início</a></li>
+      <li><a href="/produtos.html"  class="block text-white hover:text-gray-300">Produtos</a></li>
+      <li><a href="/guiapesca.html" class="block text-white hover:text-gray-300">Guias</a></li>
+      <li><a href="/contato.html"   class="block text-white hover:text-gray-300">Contato</a></li>
+      <li><a href="/sobre.html"     class="block text-white hover:text-gray-300">Sobre</a></li>
+      <li><a href="/login.html"     class="block text-white hover:text-gray-300">Login</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    const btn  = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+  </script>
+</header>
+
+
+  <main class="container mx-auto my-8">
+    <h2 class="text-2xl mb-4">Todos os Produtos</h2>
+    <form id="filtro" class="flex space-x-2 mb-6">
+      <input name="busca" placeholder="Pesquisar" class="border p-2 flex-1">
+      <select name="categoria" class="form-select">
+        <option value="">Todas as Categorias</option>
+        <option value="varas">Varas</option>
+        <option value="carretilhas">Carretilhas</option>
+        <option value="molinetes">Molinetes</option>
+        <option value="linhas">Linhas</option>
+        <option value="anzois">Anzóis</option>
+        <option value="iscas">Iscas</option>
+        <option value="caixas">Caixas</option>
+        <option value="acessorios">Acessórios</option>
+        <option value="eletronicos">Eletrônicos</option>
+        <option value="barcos">Barcos Equipamentos</option>
+        <option value="vestuario">Vestuário</option>
+        <option value="conveniencia">Conveniência</option>
+        <option value="outros">Outros</option>
+    </select>
+      <button type="submit" class="bg-blue-600 text-white px-4">Filtrar</button>
+    </form>
+
+    <div id="listaProdutos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <div class="footer-info mb-3">
+        <a href="https://wa.me/5544999889253" target="_blank" class="d-block text-white">
+            WhatsApp: (44) 99988-9253
+        </a>
+        <a href="#" class="d-block text-white">
+            Rádio VHF: 16 (156.800)
+        </a>
+    </div>
+    <p class="mb-1">&copy; Nonô Véio do Rio. Todos os direitos reservados.</p>
+    
+    <!-- Créditos do desenvolvedor -->
+    <p class="text-muted" style="font-size: 0.9em;">
+        <p>Desenvolvido por </p>
+        <a href="https://www.linkedin.com/in/william-matew-lira-barzon-983789231" 
+        target="_blank" 
+        class="text-info text-decoration-none">
+        William Matew Lira
+        </a> — Desenvolvedor de Software
+    </p>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script>
+    const form = document.getElementById('filtro');
+    const container = document.getElementById('listaProdutos');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const params = new URLSearchParams(new FormData(form));
+      fetch('/api/produtos/all?' + params)
+        .then(r => r.json())
+        .then(rows => {
+          container.innerHTML = '';
+          rows.forEach(p => {
+            container.insertAdjacentHTML('beforeend', `
+              <div class="border p-4 rounded shadow">
+                <img src="/imagens/${p.imagem}" class="w-full h-40 object-cover mb-2">
+                <h5 class="font-bold">${p.nome}</h5>
+                <p>Marca: ${p.marca}</p>
+                <p>Categoria: ${p.categoria}</p>
+                <p>R$ ${p.valor}</p>
+                <a href="https://wa.me/5544999889253" target="_blank" class="inline-block mt-2">
+                  <img src="/imagens/whats.jpg" class="h-8" alt="WhatsApp">
+                </a>
+              </div>
+            `);
+          });
+        });
+    });
+
+    // busca inicial
+    form.dispatchEvent(new Event('submit'));
+  </script>
+</body>
+</html>

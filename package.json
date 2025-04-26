@@ -9,35 +9,38 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "dev": "nodemon app.js"
-    
   },
   "keywords": [
     "express",
     "express-handlebars",
     "bootstrap",
     "tailwindcss",
-    "mongoose",
+    "prisma",
+    "postgres",
+    "node",
+    "nodemon",
+    "express-session",
+    "express-fileupload",
     "dotenv",
     "express-session",
     "express-fileupload",
-    "pg"  
-    
+    "pg"
   ],
   "author": "william lira",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@prisma/client": "^6.6.0",
     "@tailwindcss/vite": "^4.0.17",
     "bootstrap": "^5.3.3",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-fileupload": "^1.5.1",
-    "express-handlebars": "^8.0.1",
     "express-session": "^1.18.1",
     "pg": "^8.0.0"
-    
   },
   "devDependencies": {
+    "prisma": "^6.6.0",
     "tailwindcss": "^4.0.17"
   }
 }
