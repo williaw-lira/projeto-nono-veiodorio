@@ -1,11 +1,5 @@
-
-
+.env
+.env.local
+.env.development.local
 dependencias.txt
 .vercel
-.env
-node_modules
-package-lock.json
-package.json
-
-
-
