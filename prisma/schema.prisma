@@ -29,3 +29,4 @@ model Guia {
 
   @@map("guias")
 }
+

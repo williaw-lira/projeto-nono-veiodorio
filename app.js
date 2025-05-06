@@ -1,25 +1,30 @@
 // app.js
 require('dotenv').config();
-const express         = require('express');
+const express= require('express');
 const { PrismaClient } = require('@prisma/client');
-const fileUpload      = require('express-fileupload');
-const session         = require('express-session');
-const fs              = require('fs');
-const path            = require('path');
+const fileUpload = require('express-fileupload');
+const session = require('express-session');
+const fs = require('fs');
+const path = require('path');
 
+const app = express();
 const prisma = new PrismaClient();
-const app    = express();
 
-// Sessão
+// Middleware de autenticação
+const isAuthenticated = (req, res, next) => {
+  if (req.session.user) { // Verifica se a sessão tem um usuário
+    next(); // Usuário autenticado, prossegue
+  } else {
+    res.status(401).json({ error: 'Acesso não autorizado' }); // Bloqueia a rota
+  }
+};
+
 app.use(session({
-  secret: process.env.SECRET_KEY || 'security',
+  secret: process.env.SECRET_KEY || 'supersecretkey', // Chave para assinar a sessão
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
+  saveUninitialized: false,
+  cookie: { secure: false } // Altere para true se usar HTTPS
 }));
-function isAuthenticated(req, res, next) {
-  req.session.user ? next() : res.redirect('/login.html');
-}
 
 // Parsers e upload
 app.use(express.json());
@@ -27,7 +32,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload());
 
 // Serve TUDO que estiver em public/
-// — seu HTML agora deve estar em public/index.html, public/produtos.html, etc.
 app.use('/', express.static(path.join(__dirname, 'public')));
 app.use('/bootstrap', express.static(path.join(__dirname, 'node_modules/bootstrap/dist')));
 
