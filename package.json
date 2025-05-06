@@ -7,13 +7,14 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "chmod +x ./node_modules/.bin/prisma",
     "build": "npx prisma generate",
     "migrate": "npx prisma migrate dev",
     "migrate:deploy": "npx prisma migrate deploy",
     "start": "npx prisma generate && node app.js",
     "dev": "nodemon app.js"
   },
-  
+
   "keywords": [
     "express",
     "express-handlebars",
