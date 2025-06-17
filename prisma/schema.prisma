@@ -25,7 +25,7 @@ model Guia {
   id                Int     @id @default(autoincrement())
   nome              String
   descricao         String
-  imagem_principal  String? @map("imagem_principal") @db.VarChar(255)
+  imagem_principal  String? 
   imagemsec         String? @map("imagemsec") @db.VarChar(255)
   imagemterc        String? @map("imagemterc") @db.VarChar(255)
   whatsapp          String
