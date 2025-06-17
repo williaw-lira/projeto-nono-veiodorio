@@ -1,5 +1,6 @@
 /* produtos.css */
 @import "tailwindcss";
+
 .produtos-container {
     padding: 20px;
     background-color: #f8f9fa; /* fundo claro para contraste */
@@ -17,7 +18,6 @@ h1 {
     text-shadow: 1px 1px 2px rgba(28, 48, 83, 0.1);
 }
 
-
 .produtos-container h1 {
     margin-bottom: 20px;
     font-size: 2.5rem;
@@ -27,41 +27,76 @@ h1 {
 }
 
 /* Estilização dos cards de produto */
-.produtos-container .card {
-    margin-bottom: 20px;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-}
+/* Removi as classes .card para usar diretamente as classes do TailwindCSS no HTML */
 
-.produtos-container .card:hover {
-    transform: translateY(-5px);
-}
-
-.produtos-container .card-img-top {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+/* Ajuste da altura da imagem para melhor visualização */
+.product-image {
+    height: 250px; /* Aumentado de 160px (h-40) para 250px */
     object-fit: cover;
-    height: 200px;
+    width: 100%; /* Garante que a imagem ocupe a largura total do card */
+    cursor: pointer; /* Indica que a imagem é clicável */
 }
 
-.produtos-container .card-body {
-    padding: 15px;
+/* Estilos para o Modal de Imagem */
+.image-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.produtos-container .card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #343a40;
-    margin-bottom: 10px;
+.image-modal.hidden {
+    display: none;
 }
 
-.produtos-container .card-text {
-    margin-bottom: 5px;
-    color: #6c757d;
-    font-size: 0.9rem;
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    text-align: center;
+}
+
+.modal-content img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove o espaço extra abaixo da imagem */
+    margin: 0 auto; /* Centraliza a imagem no modal */
+}
+
+.close-button {
+    color: #aaaaaa;
+    font-size: 35px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Animação para o modal */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }
 
 /* Contêiner para alinhar o valor e o ícone do WhatsApp */
