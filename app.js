@@ -5,9 +5,6 @@ import session from 'express-session';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import postgres from 'postgres';
-
-const sql = postgres(process.env.DATABASE_URL,  { ssl: 'verify-full' });
 
 // ===== Restaurando __filename e __dirname em módulo ESM =====
 const __filename = fileURLToPath(import.meta.url);
