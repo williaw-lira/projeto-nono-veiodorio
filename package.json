@@ -8,11 +8,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npx prisma generate",
-    "build": "npx prisma generate",
+    "postinstall": "echo 'Prisma generate será executado no build script.'",
+    "build": "npx prisma generate && echo 'Build concluído com Prisma Client gerado!'",
     "migrate": "npx prisma migrate dev",
     "migrate:deploy": "npx prisma migrate deploy",
-    "start": "npx prisma generate && node app.js",
+    "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "keywords": [

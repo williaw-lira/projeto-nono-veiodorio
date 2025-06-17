@@ -14,5 +14,6 @@
     ],
     "env": {
     "SECRET_KEY": "supersecretkey"
-    }
+    },
+    "buildCommand": "npm run build" 
 }
