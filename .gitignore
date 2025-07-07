@@ -48,7 +48,4 @@ yarn-error.log
 migrations.sql  
 dependencias.txt
 
-routes/authRoutes.js
-controllers/authController.js
-config/prisma/session.js
 node_modules/
