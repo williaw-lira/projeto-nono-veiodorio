@@ -3,8 +3,6 @@
 .env.development.local
 dependencias.txt
 .vercel
-session.js
-authController.js
 .gitignore
 # Logs
 logs
@@ -52,3 +50,8 @@ public/imagens/
 public/imagensGuia/ 
 migrations.sql  
 dependencias.txt
+
+routes/authRoutes.js
+controllers/authController.js
+config/prisma/session.js
+node_modules/
