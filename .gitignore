@@ -3,3 +3,49 @@
 .env.development.local
 dependencias.txt
 .vercel
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Compiled output
+/dist/
+/build/
+/out/
+/coverage/       # Se você usar testes de cobertura
+
+# Environments
+.env             # Arquivo principal de variáveis de ambiente
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.vercel/         # Configurações do Vercel, muitas vezes contêm segredos
+
+# Misc
+.DS_Store        # macOS
+Thumbs.db        # Windows
+npm-debug.log
+yarn-error.log
+.idea/           # JetBrains IDEs (IntelliJ, WebStorm)
+.vscode/         # VS Code
+*.swp            # Vim swap files
+.nyc_output/     # NYC (Istanbul) test coverage
+.temp/
+.cache/
+/tmp
+/temp
+
+# Specific to your project (if applicable)
+public/imagens/  # Se você não quer versionar as imagens upadas (recomendado)
+public/imagensGuia/ # Mais imagens upadas
+migrations.sql   # Se for gerado automaticamente e não versionado com o schema
+dependencias.txt # Seu arquivo existente
