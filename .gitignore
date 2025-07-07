@@ -4,6 +4,8 @@
 dependencias.txt
 .vercel
 session.js
+authController.js
+.gitignore
 # Logs
 logs
 *.log
@@ -45,8 +47,8 @@ yarn-error.log
 /tmp
 /temp
 
-# Specific to your project (if applicable)
-public/imagens/  # Se você não quer versionar as imagens upadas (recomendado)
-public/imagensGuia/ # Mais imagens upadas
-migrations.sql   # Se for gerado automaticamente e não versionado com o schema
-dependencias.txt # Seu arquivo existente
+
+public/imagens/  
+public/imagensGuia/ 
+migrations.sql  
+dependencias.txt
