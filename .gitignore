@@ -3,6 +3,7 @@
 .env.development.local
 dependencias.txt
 .vercel
+session.js
 # Logs
 logs
 *.log
