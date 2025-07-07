@@ -40,9 +40,13 @@ Este projeto tem como objetivo oferecer uma **vitrine virtual para a loja de pes
 ## 📁 Estrutura do Projeto
 
 /public → Arquivos estáticos (HTML, CSS, JS, imagens)
+
 /config/prisma → Arquivo schema.prisma e config do Prisma
+
 /routes → (caso adicionado, futuras rotas separadas)
+
 app.js → Arquivo principal da aplicação
+
 .env → Variáveis de ambiente
 
 🌱 Contribuição aos Objetivos de Desenvolvimento Sustentável (ODS)
